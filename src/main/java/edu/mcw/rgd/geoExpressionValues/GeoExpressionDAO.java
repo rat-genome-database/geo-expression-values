@@ -15,12 +15,16 @@ import java.util.List;
  */
 public class GeoExpressionDAO extends AbstractDAO {
     public List<ExpressionExpRec> getRecs() throws SQLException {
-        String sql="select g.rgd_id, g.gene_symbol, eer.sample_id, gv.expression_value from gene_expression_exp_record eer, experiment e,genes g, " +
-                "gene_expression_values gv " +
+        String sql="select g.rgd_id, g.gene_symbol, eer.sample_id, gv.expression_value from " +
+                "gene_expression_exp_record eer, experiment e,genes g, " +
+                "gene_expression_values gv , rgd_ids r " +
                 "where e.experiment_id=eer.experiment_id " +
+
                 "and gv.gene_expression_exp_record_id =eer.gene_expression_exp_record_id " +
                 "and g.rgd_id=gv.expressed_object_rgd_id " +
-                "and e.study_id=3012";
+                "and r.rgd_id=g.rgd_id " +
+                "and r.object_status='ACTIVE'" +
+                "and e.study_id=3013";
 
         Connection connection= null;
         PreparedStatement stmt=null;
