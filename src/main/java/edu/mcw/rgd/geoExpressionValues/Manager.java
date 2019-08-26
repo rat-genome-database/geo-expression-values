@@ -54,7 +54,7 @@ public class Manager {
             matrix[l][0]= String.valueOf(e.getKey());
             l++;
         }
-        System.out.println("Matrix Length after rgdIds:"+matrix.length);
+
         int m=2;
         for(int s:samples){
 
@@ -62,7 +62,7 @@ public class Manager {
 
             m++;
         }
-        System.out.println("Matrix Length after samples:"+matrix.length);
+   
 
         int i=1;
 
